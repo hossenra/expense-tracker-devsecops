@@ -1,0 +1,16 @@
+# Apply everything with:  kubectl apply -k k8s/
+# Change only the two "newName"/"newTag" pairs below to deploy another version.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - namespace.yaml
+  - mongo.yaml
+  - backend.yaml
+  - frontend.yaml
+images:
+  - name: expense-backend
+    newName: razibul93/expense-backend
+    newTag: 17110e14d225c179fe5ee3c017ffb8d2008dc0bf
+  - name: expense-frontend
+    newName: razibul93/expense-frontend
+    newTag: 17110e14d225c179fe5ee3c017ffb8d2008dc0bf
